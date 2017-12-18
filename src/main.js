@@ -3,10 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
+import 'normalize.css/normalize.css'
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import 'normalize.css/normalize.css'
+
 import './style/index.scss'
+
 import filter from './utils/filter.js'
 
 Vue.config.productionTip = false

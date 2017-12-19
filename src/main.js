@@ -3,15 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 
 import 'normalize.css/normalize.css'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-import './style/index.scss'
+import './styles/index.scss'
 
 import filter from './utils/filter.js'
+import '@/permission'
 
 Vue.config.productionTip = false
 
@@ -26,6 +28,7 @@ Object.keys(filter).forEach((key, index, arr) => { // Object.keys返回遍历的
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

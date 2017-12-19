@@ -1,0 +1,40 @@
+//sidebar
+$menuBg:#304156;
+$subMenuBg:#1f2d3d;
+$menuHover:#001528;
+
+#app {
+  // 主体区域
+  .main-container {
+    min-height: 100%;
+    transition: margin-left 0.28s;
+    margin-left: 200px;
+  } // 侧边栏
+  .sidebar-container {
+    transition: width 0.28s;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    background: #454b4e;
+    a {
+      display: inline-block;
+      width: 100%;
+    }
+    .svg-icon {
+      margin-right: 16px;
+    }
+    .el-menu {
+      border: none;
+    }
+    &.hide {
+      width: 64px;
+      + .main-container {
+        margin-left: 64px; 
+      }
+    }
+  }
+}

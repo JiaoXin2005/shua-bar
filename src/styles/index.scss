@@ -1,3 +1,4 @@
+@import './mixin.scss';
 @import './sidebar.scss';
 
 body {
@@ -121,7 +122,7 @@ code {
 }
 
 //main-container全局样式
-.app-container {
+.pd-20 {
   padding: 20px;
 }
 

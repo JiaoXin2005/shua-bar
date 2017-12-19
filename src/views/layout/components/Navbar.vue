@@ -1,6 +1,6 @@
 <template>
   <el-menu class="navbar" mode="horizontal" >
-    <!-- <hamburger class="hamburger-container"></hamburger> -->
+    <hamburger :active="sidebar.opened" :toggleClick="toggleSideBar"></hamburger>
 
     <!-- <breadcrumb class="breadcrumb-container"></breadcrumb> -->
 
@@ -8,7 +8,7 @@
 
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
-          <img class="user-avatar" src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80">
+          <img class="user-avatar" src="~assets/avatar.gif">
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -28,10 +28,29 @@
 </template>
 
 <script>
+import { removeToken } from '@/utils/auth'
+import { mapGetters } from 'vuex'
+import Hamburger from '@/components/Hamburger'
+
 export default {
+  components: {
+    Hamburger
+  },
+  computed: {
+    ...mapGetters(['sidebar'])
+  },
+  data () {
+    return {
+      active: false
+    }
+  },
   methods: {
     logout () {
-      console.log('退出登录')
+      removeToken()
+      console.log(this.$router.push('/login'))
+    },
+    toggleSideBar () {
+      this.$store.dispatch('toggleSideBar')
     }
   }
 }
@@ -90,6 +109,7 @@ export default {
           width: 40px;
           height: 40px;
           border-radius: 10px;
+          border: 1px solid #929292;
         }
         .el-icon-caret-bottom {
           position: absolute;

@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main" style="min-height: 100%">
+  <section class="app-main pd-20" style="min-height: 100%">
     <div>这是Appmain</div>
     <transition name="fade" mode="out-in">
       <router-view></router-view>

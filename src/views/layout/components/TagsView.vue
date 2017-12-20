@@ -21,7 +21,10 @@ export default {
 
 <style lang="scss" scoped>
 .tags-view-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
   .tags-view-wrapper {
+    white-space: nowrap;
     background: #fff;
     height: 34px;
     border-bottom: 1px solid #d8dce5;

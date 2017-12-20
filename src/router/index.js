@@ -32,15 +32,28 @@ export const constantRouterMap = [
       component: _import('dashboard/index')
     }]
   },
+
   {
-    path: '/runningtask',
+    path: '/running-task',
     component: Layout,
     name: 'RunningTask',
     hidden: false,
     children: [{
-      meta: { title: '执行任务页', icon: 'fa-tachometer' },
+      meta: { title: '执行任务页', icon: 'fa-tasks' },
       path: 'index',
-      component: _import('runningtask/index')
+      component: _import('running-task/index')
+    }]
+  },
+
+  {
+    path: '/user-manage',
+    component: Layout,
+    name: 'UserManage',
+    hidden: false,
+    children: [{
+      meta: { title: '用户管理', icon: 'fa-tasks' },
+      path: 'index',
+      component: _import('user-manage/index')
     }]
   }
 ]

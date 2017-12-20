@@ -104,6 +104,14 @@ const webpackConfig = merge(baseWebpackConfig, {
       children: true,
       minChunks: 3
     }),
+    // split echarts into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      async: 'echarts',
+      minChunks(module) {
+        var context = module.context;
+        return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0);
+      }
+    }),
 
     // copy custom static assets
     new CopyWebpackPlugin([

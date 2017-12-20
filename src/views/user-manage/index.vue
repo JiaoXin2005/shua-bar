@@ -49,6 +49,7 @@
         <el-button v-else type="primary" @click="updateData">确 定</el-button>
       </div>
     </el-dialog>
+    
   </div>  
 </template>
 
@@ -97,8 +98,8 @@ export default {
       this.dialogFormVisible = false
     },
     updateData () {
-      this.tableData.push(this.temp)      
-      this.dialogFormVisible = false      
+      this.tableData.push(this.temp)
+      this.dialogFormVisible = false
     }
   }
 }

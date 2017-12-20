@@ -17,6 +17,11 @@
               首页
             </el-dropdown-item>
           </router-link>
+          <router-link to="/user-manage/setting">
+            <el-dropdown-item>
+              修改密码
+            </el-dropdown-item>
+          </router-link>
           <el-dropdown-item divided>
             <span @click="logout" style="display:block;">退出登录</span>
           </el-dropdown-item>

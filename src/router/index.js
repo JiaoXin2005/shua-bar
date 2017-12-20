@@ -50,11 +50,25 @@ export const constantRouterMap = [
     component: Layout,
     name: 'UserManage',
     hidden: false,
-    children: [{
-      meta: { title: '用户管理', icon: 'fa-tasks' },
-      path: 'index',
-      component: _import('user-manage/index')
-    }]
+    meta: {
+      title: '用户管理',
+      icon: 'fa-building'
+    },
+    children: [
+      { meta: { title: '用户列表', icon: 'fa-list-ul' }, path: 'index', component: _import('user-manage/index') },
+      { meta: { title: '用户登录历史', icon: 'fa-history' }, path: 'history', component: _import('user-manage/History') },
+      { hidden: true, path: 'setting', component: _import('user-manage/Setting') }
+    ]
+  },
+
+  {
+    path: '/account-manage',
+    component: Layout,
+    name: 'AccountManage',
+    hidden: false,
+    children: [
+      { meta: { title: '账号列表', icon: 'fa-th-list' }, path: 'index', component: _import('account-manage/index') },
+    ]
   }
 ]
 

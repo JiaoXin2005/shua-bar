@@ -1,7 +1,7 @@
 <template>
   <div class="reply-comment">
  
-    <el-dialog title="新建评论回复任务" :visible.sync="dialogFormVisible">
+    <el-dialog title="新建评论回复任务" :visible.sync="dialogVisible" @close="close">
       <el-form  label-width="80px" class="wd-460">
         <el-form-item label="文章链接">
 
@@ -20,7 +20,8 @@
         </el-form-item>
     
         <el-form-item>
-          <el-button type="primary" >立即创建</el-button>
+          <el-button type="primary" @click="close">取 消</el-button>          
+          <el-button type="primary" @click="confirm">立即创建</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -32,12 +33,23 @@
 <script>
 export default {
   name: 'ReplyComment',
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
+      dialogVisible: false,
       links: [{
         value: ''
-      }],
-      dialogFormVisible: false
+      }]
+    }
+  },
+  watch: {
+    visible (v) {
+      this.dialogVisible = v
     }
   },
   methods: {
@@ -48,6 +60,12 @@ export default {
     },
     deleteLink (index) {
       this.links.splice(index, 1)
+    },
+    confirm () {
+      this.$emit('update:visible', false)
+    },
+    close () {
+      this.$emit('update:visible', false)
     }
   }
 }

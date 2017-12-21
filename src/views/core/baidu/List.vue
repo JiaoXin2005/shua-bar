@@ -8,13 +8,13 @@
 
     <div class="filer-container">
       <el-input class="wd-200" placeholder="任务名称" ></el-input>
-      <el-select placeholder="状态">
-        <el-option>运行中</el-option>
-        <el-option>停止</el-option>
+      <el-select placeholder="状态" v-model="test">
+        <el-option label="运行中" value="运行中"></el-option>
+        <el-option label="停止" value="停止"></el-option>
       </el-select>
-      <el-select placeholder="类型">
-        <el-option>类型1</el-option>
-        <el-option>类型2</el-option>
+      <el-select placeholder="类型" v-model="test">
+        <el-option label="类型1" value="类型1">类型1</el-option>
+        <el-option label="类型2" value="类型2">类型2</el-option>
       </el-select>
       <el-button type="primary">查询</el-button>
     </div>
@@ -45,9 +45,10 @@
         label="账号类型">
       </el-table-column>
       <el-table-column
+        width="180"
         label="操作">
         <template slot-scope="scope">
-          <el-button type="primary" >更多</el-button>
+          <el-button >更多</el-button>
           <router-link to="detail/1/1">
             <el-button type="primary" >任务详细</el-button>          
           </router-link> 
@@ -55,8 +56,9 @@
       </el-table-column>
     </el-table>
 
-    <reply-comment></reply-comment>
-    <send-message></send-message>
+    <reply-comment :visible.sync="ReplyCommentVisible" ></reply-comment>
+    <send-message :visible.sync="SendMessageVisible"></send-message>
+
   </div>
 </template>
 
@@ -72,6 +74,9 @@ export default {
   },
   data () {
     return {
+      SendMessageVisible: false,
+      ReplyCommentVisible: false,
+      test: '',
       tableData: [
         {
           id: '1',
@@ -99,8 +104,10 @@ export default {
   },
   methods: {
     openSendMessage () {
+      this.SendMessageVisible = true
     },
     openReplyComment () {
+      this.ReplyCommentVisible = true
     }
   }
 }

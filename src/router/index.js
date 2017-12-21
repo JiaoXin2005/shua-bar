@@ -69,7 +69,27 @@ export const constantRouterMap = [
     children: [
       { meta: { title: '账号列表', icon: 'fa-th-list' }, path: 'index', component: _import('account-manage/index') },
     ]
-  }
+  },
+
+  {
+    path: '/baidu',
+    component: Layout,
+    name: 'Baidu',
+    redirect: '/baidu/list',
+    hidden: false,
+    meta: {
+      title: '百度',
+      icon: 'fa-paw'
+    },
+    children: [
+      { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/baidu/List') },
+      { meta: { title: '新建消息发送', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '新建评论回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+    ]
+  },
+
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 export default new Router({

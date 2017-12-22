@@ -75,14 +75,16 @@ export const constantRouterMap = [
     path: '/baidu',
     component: Layout,
     name: 'Baidu',
-    redirect: '/baidu/list',
+    redirect: '/baidu/reply-comment',
     hidden: false,
     meta: {
       title: '百度',
       icon: 'fa-paw'
     },
     children: [
-      { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/baidu/List') },
+      // { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/baidu/List') },
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '发微博', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },

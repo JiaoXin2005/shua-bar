@@ -56,8 +56,8 @@
       </el-table-column>
     </el-table>
 
-    <reply-comment :visible.sync="ReplyCommentVisible" ></reply-comment>
-    <send-message :visible.sync="SendMessageVisible"></send-message>
+    <!-- <reply-comment :visible.sync="ReplyCommentVisible" ></reply-comment> -->
+    <!-- <send-message :visible.sync="SendMessageVisible"></send-message> -->
 
   </div>
 </template>

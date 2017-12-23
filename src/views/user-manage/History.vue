@@ -5,7 +5,7 @@
     <div class="filer-container">
       <el-input class="wd-200" placeholder="用户名" ></el-input>
       <el-date-picker v-model="time" type="date" placeholder="开始时间"></el-date-picker>
-      <el-button type="primary">查询</el-button>
+      <el-button type="success">查询</el-button>
     </div>
 
     <el-table

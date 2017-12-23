@@ -16,6 +16,95 @@ Vue.use(Router)
   }
 **/
 
+/* coreBuinessRouter : @/view/core 下的核心业务路由 */
+const coreBuinessRouter = [
+  {
+    path: '/baidu',
+    component: Layout,
+    name: 'Baidu',
+    redirect: '/baidu/reply-comment',
+    hidden: false,
+    meta: {
+      title: '百度',
+      icon: 'fa-paw'
+    },
+    children: [
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+    ]
+  },
+
+  {
+    path: '/eyny',
+    component: Layout,
+    name: 'Eyny',
+    redirect: '/eyny/reply-comment',
+    hidden: false,
+    meta: {
+      title: '伊莉',
+      icon: 'fa-users'
+    },
+    children: [
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+    ]
+  },
+
+  {
+    path: '/sina',
+    component: Layout,
+    name: 'Sina',
+    redirect: '/sina/reply-comment',
+    hidden: false,
+    meta: {
+      title: '新浪',
+      icon: 'fa-yelp'
+    },
+    children: [
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
+      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+    ]
+  },
+
+  {
+    path: '/ntes',
+    component: Layout,
+    name: 'Ntes',
+    redirect: '/ntes/reply-comment',
+    hidden: false,
+    meta: {
+      title: '网易',
+      icon: 'fa-etsy'
+    },
+    children: [
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
+      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+    ]
+  },
+
+  {
+    path: '/weibo',
+    component: Layout,
+    name: 'Weibo',
+    redirect: '/weibo/reply-comment',
+    hidden: false,
+    meta: {
+      title: '微博',
+      icon: 'fa-weibo'
+    },
+    children: [
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+    ]
+  }
+]
+
+/* constantRouterMap: 总路由表 */
 export const constantRouterMap = [
   { path: '/404', component: _import('404/index'), hidden: true },
   { path: '/login', component: _import('login/index'), hidden: true },
@@ -32,6 +121,8 @@ export const constantRouterMap = [
       component: _import('dashboard/index')
     }]
   },
+
+  ...coreBuinessRouter,
 
   {
     path: '/running-task',
@@ -68,24 +159,6 @@ export const constantRouterMap = [
     hidden: false,
     children: [
       { meta: { title: '账号列表', icon: 'fa-th-list' }, path: 'index', component: _import('account-manage/index') },
-    ]
-  },
-
-  {
-    path: '/baidu',
-    component: Layout,
-    name: 'Baidu',
-    redirect: '/baidu/reply-comment',
-    hidden: false,
-    meta: {
-      title: '百度',
-      icon: 'fa-paw'
-    },
-    children: [
-      // { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/baidu/List') },
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '发微博', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
 

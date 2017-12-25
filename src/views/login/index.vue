@@ -13,7 +13,7 @@
       </el-form-item>
 
       <el-button type="primary" style="width:100%;margin-bottom:30px;"
-        @click="handleLogin">登录</el-button>
+        @click="handleLogin"><i class="fa fa-sign-in"></i>登录</el-button>
 
     </el-form>
   </div>
@@ -41,15 +41,24 @@ export default {
   .login-container {
     @include relative;
     // height: 100vh;
-    background-color: $bg;
+    background: url('~assets/backgroud.png') 0 / cover fixed;
     overflow: hidden;
     .login-form {
-      position: absolute;
-      left: 0;
-      right: 0;
+      position: relative;
       width: 400px;
       padding: 35px 35px 15px 35px;
-      margin: 120px auto;
+      margin: 150px auto;
+      background-color: rgba(28, 65, 131, 0.5);
+      border-radius: 8px;
+      z-index: 1;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background: rgba(100, 148, 231, 0.2);
+        box-shadow: 0 0 6px 6px rgba(93, 135, 200, 0.2);
+        z-index: -1;
+      }
     }
     .title {
       font-size: 26px;
@@ -58,6 +67,9 @@ export default {
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+    }
+    .fa-sign-in {
+      margin-right: 10px;
     }
   }
 </style>

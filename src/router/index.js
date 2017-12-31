@@ -46,9 +46,9 @@ const coreBuinessRouter = [
       icon: 'fa-users'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
-      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
 
@@ -63,9 +63,9 @@ const coreBuinessRouter = [
       icon: 'fa-yelp'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
-      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
 
@@ -80,9 +80,9 @@ const coreBuinessRouter = [
       icon: 'fa-etsy'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
-      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
 
@@ -97,9 +97,9 @@ const coreBuinessRouter = [
       icon: 'fa-weibo'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
-      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   }
 ]

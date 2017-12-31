@@ -63,9 +63,20 @@
         </el-form-item>
 
         </el-form-item>
+
         <el-form-item label="评论内容">
-          <el-input type="textarea"></el-input>
+          <el-input type="textarea" v-model="comment"></el-input>
+
+          <!-- s: 翻译按钮 -->
+          <translate-btn :inputVal="comment" @click="handleTranslateLang"></translate-btn>
+          <!-- e: 翻译按钮 -->          
+
         </el-form-item>
+
+        <el-form-item label="">
+          <el-input type="textarea" v-model="comment1"></el-input>
+        </el-form-item>
+
         <el-form-item label="评论数量">
           <el-input type="input" class="wd-200"></el-input>
         </el-form-item>
@@ -74,6 +85,7 @@
           <el-button type="danger" @click="dialogVisible = false">取 消</el-button>          
           <el-button type="success" @click="confirm">立即创建</el-button>
         </el-form-item>
+
       </el-form>
     </el-dialog>
     <!-- e: 新建弹窗 -->
@@ -96,10 +108,17 @@
 </template>
 
 <script>
+import TranslateBtn from '@/components/TranslateBtn'
+
 export default {
   name: 'ReplyComment',
+  components: {
+    TranslateBtn
+  },
   data () {
     return {
+      comment: '',
+      comment1: '',
       dialogVisible: false,
       moreDialogVisible: false,
       test: '',
@@ -142,6 +161,9 @@ export default {
     },
     confirm () {
       this.dialogVisible = true
+    },
+    handleTranslateLang (val) {
+      this.comment1 = val
     }
   }
 }

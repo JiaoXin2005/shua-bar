@@ -25,12 +25,12 @@ const coreBuinessRouter = [
     redirect: '/baidu/reply-comment',
     hidden: false,
     meta: {
-      title: '百度',
+      title: '百度贴吧',
       icon: 'fa-paw'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
@@ -46,9 +46,9 @@ const coreBuinessRouter = [
       icon: 'fa-users'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
+      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
     ]
   },
 
@@ -59,12 +59,12 @@ const coreBuinessRouter = [
     redirect: '/sina/reply-comment',
     hidden: false,
     meta: {
-      title: '新浪',
+      title: '新浪新闻',
       icon: 'fa-yelp'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
@@ -80,8 +80,8 @@ const coreBuinessRouter = [
       icon: 'fa-etsy'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
@@ -97,8 +97,42 @@ const coreBuinessRouter = [
       icon: 'fa-weibo'
     },
     children: [
-      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+    ]
+  },
+
+  {
+    path: '/facebook',
+    component: Layout,
+    name: 'Facebook',
+    redirect: '/facebook/reply-comment',
+    hidden: false,
+    meta: {
+      title: 'Facebook',
+      icon: 'fa-facebook'
+    },
+    children: [
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+    ]
+  },
+
+  {
+    path: '/twitter',
+    component: Layout,
+    name: 'Twitter',
+    redirect: '/twitter/reply-comment',
+    hidden: false,
+    meta: {
+      title: 'Twitter',
+      icon: 'fa-twitter'
+    },
+    children: [
+      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   }

@@ -52,14 +52,24 @@
 
 
     <el-dialog title="新建消息发送任务" :visible.sync="dialogVisible">
-      <el-form label-width="80px" class="wd-460">
+      <el-form label-width="80px" class="wd-550">
         <el-form-item label="发送内容">
-          <el-input type="textarea"></el-input>
+          <el-input type="textarea" v-model="comment" placeholder="一定要是繁体哦~"></el-input>
+
+          <!-- s: 翻译按钮 -->
+          <translate-btn :inputVal="comment" @click="handleTranslateLang"></translate-btn>
+          <!-- e: 翻译按钮 -->          
+
         </el-form-item>
+
+        <el-form-item label="">
+          <el-input type="textarea" v-model="comment1"></el-input>
+        </el-form-item>
+
         <el-form-item label="吧名">
           <el-input type="input"></el-input>
         </el-form-item>
-        <el-form-item label="发送数量">
+        <el-form-item label="发送数量" class="wd-250">
           <el-input type="input"></el-input>
         </el-form-item>     
         <el-form-item>
@@ -83,15 +93,21 @@
     </el-dialog>
     <!-- e: 更多弹窗 -->
 
-
   </div>
 </template>
 
 <script>
+import TranslateBtn from '@/components/TranslateBtn'
+
 export default {
   name: 'SendMessage',
+  components: {
+    TranslateBtn
+  },
   data () {
     return {
+      comment: '',
+      comment1: '',
       dialogVisible: false,
       moreDialogVisible: false,
       test: '',
@@ -123,6 +139,9 @@ export default {
   methods: {
     confirm () {
       this.dialogVisible = true
+    },
+    handleTranslateLang (val) {
+      this.comment1 = val
     }
   }
 }

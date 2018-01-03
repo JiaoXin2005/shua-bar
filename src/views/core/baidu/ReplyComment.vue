@@ -53,11 +53,11 @@
 
     <!-- s: 新建弹窗 -->
     <el-dialog title="新建评论回复任务" :visible.sync="dialogVisible" >
-      <el-form  label-width="80px" class="wd-460">
+      <el-form  label-width="80px" class="wd-550">
         <el-form-item label="文章链接">
 
         <el-form-item v-for="(link, index) in links" :key="index">
-          <el-input type="input" v-model="link.value" class="wd-250"></el-input>
+          <el-input type="input" v-model="link.value" class=""></el-input>
           <el-button type="danger" @click="deleteLink(index)" v-if="links.length !== 1">删除</el-button>
           <el-button type="primary" @click="addLink()" v-if="index == links.length-1">新增</el-button>
         </el-form-item>

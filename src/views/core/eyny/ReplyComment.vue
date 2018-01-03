@@ -53,19 +53,30 @@
 
     <!-- s: 新建弹窗 -->
     <el-dialog title="新建评论回复任务" :visible.sync="dialogVisible" >
-      <el-form  label-width="80px" class="wd-460">
+      <el-form  label-width="80px" class="wd-550">
         <el-form-item label="文章链接">
 
         <el-form-item v-for="(link, index) in links" :key="index">
-          <el-input type="input" v-model="link.value" class="wd-250"></el-input>
+          <el-input type="input" v-model="link.value" class=""></el-input>
           <el-button type="danger" @click="deleteLink(index)" v-if="links.length !== 1">删除</el-button>
           <el-button type="primary" @click="addLink()" v-if="index == links.length-1">新增</el-button>
         </el-form-item>
 
         </el-form-item>
+
         <el-form-item label="评论内容">
-          <el-input type="textarea"></el-input>
+          <el-input type="textarea" v-model="comment" placeholder="一定要是繁体哦~"></el-input>
+
+          <!-- s: 翻译按钮 -->
+          <translate-btn :inputVal="comment" @click="handleTranslateLang"></translate-btn>
+          <!-- e: 翻译按钮 -->          
+
         </el-form-item>
+
+        <el-form-item label="">
+          <el-input type="textarea" v-model="comment1"></el-input>
+        </el-form-item>
+
         <el-form-item label="评论数量">
           <el-input type="input" class="wd-200"></el-input>
         </el-form-item>
@@ -74,6 +85,7 @@
           <el-button type="danger" @click="dialogVisible = false">取 消</el-button>          
           <el-button type="success" @click="confirm">立即创建</el-button>
         </el-form-item>
+
       </el-form>
     </el-dialog>
     <!-- e: 新建弹窗 -->
@@ -96,10 +108,17 @@
 </template>
 
 <script>
+import TranslateBtn from '@/components/TranslateBtn'
+
 export default {
   name: 'ReplyComment',
+  components: {
+    TranslateBtn
+  },
   data () {
     return {
+      comment: '',
+      comment1: '',
       dialogVisible: false,
       moreDialogVisible: false,
       test: '',
@@ -142,6 +161,9 @@ export default {
     },
     confirm () {
       this.dialogVisible = true
+    },
+    handleTranslateLang (val) {
+      this.comment1 = val
     }
   }
 }

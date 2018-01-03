@@ -18,7 +18,7 @@ export default {
     },
     height: {
       type: String,
-      default: '350px'
+      default: '100%'
     },
     autoResize: {
       type: Boolean,
@@ -77,16 +77,21 @@ export default {
     },
     setOptions () {
       this.chart.setOption({
+        title: {
+          text: '推广系统趋势图',
+          bottom: '0%',
+          left: 'center'
+        },
         tooltip: {
           trigger: 'axis'
         },
         legend: {
-          data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+          data: ['百度贴吧', '新浪微博', 'Facebook', 'Twitter', '新浪新闻']
         },
         grid: {
           left: '3%',
           right: '4%',
-          bottom: '3%',
+          bottom: '10%',
           containLabel: true
         },
         xAxis: {
@@ -99,31 +104,31 @@ export default {
         },
         series: [
           {
-            name: '邮件营销',
+            name: '百度贴吧',
             type: 'line',
             stack: '总量',
             data: [120, 132, 101, 134, 90, 230, 210]
           },
           {
-            name: '联盟广告',
+            name: '新浪微博',
             type: 'line',
             stack: '总量',
             data: [220, 182, 191, 234, 290, 330, 310]
           },
           {
-            name: '视频广告',
+            name: 'Facebook',
             type: 'line',
             stack: '总量',
             data: [150, 232, 201, 154, 190, 330, 410]
           },
           {
-            name: '直接访问',
+            name: 'Twitter',
             type: 'line',
             stack: '总量',
             data: [320, 332, 301, 334, 390, 330, 320]
           },
           {
-            name: '搜索引擎',
+            name: '新浪新闻',
             type: 'line',
             stack: '总量',
             data: [820, 932, 901, 934, 1290, 1330, 1320]

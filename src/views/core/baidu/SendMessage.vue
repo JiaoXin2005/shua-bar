@@ -52,7 +52,7 @@
 
 
     <el-dialog title="新建消息发送任务" :visible.sync="dialogVisible">
-      <el-form label-width="80px" class="wd-460">
+      <el-form label-width="80px" class="wd-550">
         <el-form-item label="发送内容">
           <el-input type="textarea" v-model="comment"></el-input>
 
@@ -69,7 +69,7 @@
         <el-form-item label="吧名">
           <el-input type="input"></el-input>
         </el-form-item>
-        <el-form-item label="发送数量">
+        <el-form-item label="发送数量" class="wd-250">
           <el-input type="input"></el-input>
         </el-form-item>     
         <el-form-item>

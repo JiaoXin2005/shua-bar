@@ -29,8 +29,8 @@ const coreBuinessRouter = [
       icon: 'fa-paw'
     },
     children: [
-      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
@@ -46,8 +46,8 @@ const coreBuinessRouter = [
       icon: 'fa-users'
     },
     children: [
-      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
-      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
     ]
   },
@@ -63,8 +63,8 @@ const coreBuinessRouter = [
       icon: 'fa-yelp'
     },
     children: [
-      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
@@ -80,8 +80,8 @@ const coreBuinessRouter = [
       icon: 'fa-etsy'
     },
     children: [
-      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
       { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
@@ -133,7 +133,34 @@ const coreBuinessRouter = [
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
       { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') },
+    ]
+  },
+
+  {
+    path: '/email',
+    component: Layout,
+    name: 'Email',
+    redirect: '/email/create',
+    hidden: false,
+    meta: {
+      title: 'Email',
+      icon: 'fa-envelope'
+    },
+    children: [
+      { meta: { title: '新建任务', icon: '' }, path: 'create', component: _import('core/email/create') },
+      { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/email/list') }
+    ]
+  },
+
+  {
+    path: '/imessage',
+    component: Layout,
+    name: 'iMessage',
+    redirect: '/imessage/list',
+    hidden: false,
+    children: [
+      { meta: { title: 'iMessage', icon: 'fa-commenting' }, path: 'list', component: _import('core/imessage/list') }
     ]
   }
 ]

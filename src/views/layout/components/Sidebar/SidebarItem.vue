@@ -5,14 +5,14 @@
       <router-link :key="item.children[0].name" :to="item.path+'/'+item.children[0].path"
         v-if="item.children.length===1 && !item.children[0].children">
         <el-menu-item :index="item.path+'/'+item.children[0].path" class='submenu-title-noDropdown'>
-          <i class="fa" :class="item.children[0].meta.icon"></i>
+          <i class="iconfont" :class="item.children[0].meta.icon"></i>
           <span v-if="item.children[0].meta&&item.children[0].meta.title">{{item.children[0].meta.title}}</span>
         </el-menu-item>
       </router-link>
 
       <el-submenu v-else :key="item.path" :index="item.name||item.path">
         <template slot="title">
-          <i class="fa" :class="item.meta.icon" v-if="item.meta&&item.meta.icon"></i>              
+          <i class="iconfont" :class="item.meta.icon" v-if="item.meta&&item.meta.icon"></i>              
           <span v-if="item.meta&&item.meta.title">{{item.meta.title}}</span>
         </template>
 
@@ -22,7 +22,7 @@
 
             <router-link v-else :to="item.path+'/'+child.path" :key="child.path">
               <el-menu-item :index="item.path+'/'+child.path">
-                <i class="fa" :class="child.meta.icon" v-if="child.meta&&child.meta.icon"></i>              
+                <i class="iconfont" :class="child.meta.icon" v-if="child.meta&&child.meta.icon"></i>              
                 <span v-if="child.meta&&child.meta.title">{{child.meta.title}}</span>
               </el-menu-item>
             </router-link>
@@ -52,6 +52,9 @@ export default {
 .menu-wrapper {
   .fa {
     margin-right: 10px
+  }
+  .iconfont {
+    margin-right: 10px    
   }
 }
 </style>

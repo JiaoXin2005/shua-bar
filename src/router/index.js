@@ -26,7 +26,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '百度贴吧',
-      icon: 'fa-paw'
+      icon: 'icon-baidu'
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -43,7 +43,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '伊莉',
-      icon: 'fa-users'
+      icon: 'icon-etsy'
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
@@ -60,7 +60,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '新浪新闻',
-      icon: 'fa-yelp'
+      icon: 'icon-xinlang'
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -77,7 +77,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '网易',
-      icon: 'fa-etsy'
+      icon: 'icon-wangyi'
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -94,7 +94,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '微博',
-      icon: 'fa-weibo'
+      icon: 'icon-weibo'
     },
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -111,7 +111,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: 'Facebook',
-      icon: 'fa-facebook'
+      icon: 'icon-facebookicon'
     },
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -128,7 +128,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: 'Twitter',
-      icon: 'fa-twitter'
+      icon: 'icon-twitter'
     },
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -145,7 +145,7 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: 'Email',
-      icon: 'fa-envelope'
+      icon: 'icon-email'
     },
     children: [
       { meta: { title: '新建任务', icon: '' }, path: 'create', component: _import('core/email/create') },
@@ -160,7 +160,7 @@ const coreBuinessRouter = [
     redirect: '/imessage/list',
     hidden: false,
     children: [
-      { meta: { title: 'iMessage', icon: 'fa-commenting' }, path: 'list', component: _import('core/imessage/list') }
+      { meta: { title: 'iMessage', icon: 'icon-imessage' }, path: 'list', component: _import('core/imessage/list') }
     ]
   }
 ]
@@ -177,7 +177,7 @@ export const constantRouterMap = [
     name: 'Dashboard',
     hidden: false,
     children: [{
-      meta: { title: '首页', icon: 'fa-tachometer' },
+      meta: { title: '首页', icon: 'icon-tachometer' },
       path: 'dashboard',
       component: _import('dashboard/index')
     }]
@@ -191,7 +191,7 @@ export const constantRouterMap = [
     name: 'RunningTask',
     hidden: false,
     children: [{
-      meta: { title: '执行任务页', icon: 'fa-tasks' },
+      meta: { title: '执行任务页', icon: 'icon-tasks' },
       path: 'index',
       component: _import('running-task/index')
     }]
@@ -204,11 +204,11 @@ export const constantRouterMap = [
     hidden: false,
     meta: {
       title: '用户管理',
-      icon: 'fa-building'
+      icon: 'icon-building'
     },
     children: [
-      { meta: { title: '用户列表', icon: 'fa-list-ul' }, path: 'index', component: _import('user-manage/index') },
-      { meta: { title: '用户登录历史', icon: 'fa-history' }, path: 'history', component: _import('user-manage/History') },
+      { meta: { title: '用户列表', icon: '' }, path: 'index', component: _import('user-manage/index') },
+      { meta: { title: '用户登录历史', icon: '' }, path: 'history', component: _import('user-manage/History') },
       { hidden: true, path: 'setting', component: _import('user-manage/Setting') }
     ]
   },
@@ -220,7 +220,7 @@ export const constantRouterMap = [
     hidden: false,
     meta: {
       title: '账号列表',
-      icon: 'fa-th-list'
+      icon: 'icon-thlist'
     },
     children: [
       { meta: { title: '百度账号', icon: '' }, path: 'baidu', component: _import('account-manage/index') },
@@ -242,7 +242,7 @@ export const constantRouterMap = [
     hidden: false,
     meta: {
       title: '工具',
-      icon: 'fa-wrench'
+      icon: 'icon-wrench'
     },
     children: [
       { meta: { title: '翻译', icon: '' }, path: 'translate', component: _import('tool/translate') },

@@ -28,7 +28,7 @@
       </el-form-item>
 
       <el-form-item label="正文:">
-        <el-input type="textarea" class="wd-550 mgt-5" placeholder="提取的内容"
+        <el-input type="textarea" class="wd-550 mgt-5" placeholder="正文的内容"
           :autosize="{minRows:4}"></el-input>
       </el-form-item>
 

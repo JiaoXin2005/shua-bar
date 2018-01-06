@@ -13,7 +13,7 @@
       </el-form-item>
 
       <el-button type="primary" style="width:100%;margin-bottom:30px;"
-        @click="handleLogin"><i class="fa fa-sign-in"></i>登录</el-button>
+        @click="handleLogin"><i class="iconfont icon-denglu"></i>登录</el-button>
 
     </el-form>
   </div>
@@ -68,8 +68,9 @@ export default {
       text-align: center;
       font-weight: bold;
     }
-    .fa-sign-in {
+    .icon-denglu {
       margin-right: 10px;
+      vertical-align: text-top;
     }
   }
 </style>

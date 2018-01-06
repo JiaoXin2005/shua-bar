@@ -50,9 +50,6 @@ export default {
 
 <style lang="scss">
 .menu-wrapper {
-  .fa {
-    margin-right: 10px
-  }
   .iconfont {
     margin-right: 10px    
   }

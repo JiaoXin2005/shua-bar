@@ -218,8 +218,35 @@ export const constantRouterMap = [
     component: Layout,
     name: 'AccountManage',
     hidden: false,
+    meta: {
+      title: '账号列表',
+      icon: 'fa-th-list'
+    },
     children: [
-      { meta: { title: '账号列表', icon: 'fa-th-list' }, path: 'index', component: _import('account-manage/index') },
+      { meta: { title: '百度账号', icon: '' }, path: 'baidu', component: _import('account-manage/baidu') },
+      { meta: { title: '新浪账号', icon: '' }, path: 'sina', component: _import('account-manage/baidu') },
+      { meta: { title: 'facebook账号', icon: '' }, path: 'facebook', component: _import('account-manage/baidu') },
+      { meta: { title: 'twitter账号', icon: '' }, path: 'twitter', component: _import('account-manage/baidu') },
+      { meta: { title: '伊莉账号', icon: '' }, path: 'eyny', component: _import('account-manage/baidu') },
+      { meta: { title: '网易账号', icon: '' }, path: 'ntes', component: _import('account-manage/baidu') },
+      { meta: { title: 'email发件人账号', icon: '' }, path: 'email-collect', component: _import('account-manage/baidu') },
+      { meta: { title: 'email收件人账号', icon: '' }, path: 'email-send', component: _import('account-manage/baidu') },
+      { meta: { title: 'imessage收件人账号', icon: '' }, path: 'imessage-collect', component: _import('account-manage/baidu') }
+    ]
+  },
+
+  {
+    path: '/tool',
+    component: Layout,
+    name: 'Toll',
+    hidden: false,
+    meta: {
+      title: '工具',
+      icon: 'fa-wrench'
+    },
+    children: [
+      { meta: { title: '翻译', icon: '' }, path: 'translate', component: _import('tool/translate') },
+      { meta: { title: '汉语言处理', icon: '' }, path: 'deelChinese', component: _import('tool/deelChinese') }
     ]
   },
 

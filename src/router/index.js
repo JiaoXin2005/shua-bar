@@ -223,15 +223,15 @@ export const constantRouterMap = [
       icon: 'fa-th-list'
     },
     children: [
-      { meta: { title: '百度账号', icon: '' }, path: 'baidu', component: _import('account-manage/baidu') },
-      { meta: { title: '新浪账号', icon: '' }, path: 'sina', component: _import('account-manage/baidu') },
-      { meta: { title: 'facebook账号', icon: '' }, path: 'facebook', component: _import('account-manage/baidu') },
-      { meta: { title: 'twitter账号', icon: '' }, path: 'twitter', component: _import('account-manage/baidu') },
-      { meta: { title: '伊莉账号', icon: '' }, path: 'eyny', component: _import('account-manage/baidu') },
-      { meta: { title: '网易账号', icon: '' }, path: 'ntes', component: _import('account-manage/baidu') },
-      { meta: { title: 'email发件人账号', icon: '' }, path: 'email-collect', component: _import('account-manage/baidu') },
-      { meta: { title: 'email收件人账号', icon: '' }, path: 'email-send', component: _import('account-manage/baidu') },
-      { meta: { title: 'imessage收件人账号', icon: '' }, path: 'imessage-collect', component: _import('account-manage/baidu') }
+      { meta: { title: '百度账号', icon: '' }, path: 'baidu', component: _import('account-manage/index') },
+      { meta: { title: '新浪账号', icon: '' }, path: 'sina', component: _import('account-manage/index') },
+      { meta: { title: 'facebook账号', icon: '' }, path: 'facebook', component: _import('account-manage/index') },
+      { meta: { title: 'twitter账号', icon: '' }, path: 'twitter', component: _import('account-manage/index') },
+      { meta: { title: '伊莉账号', icon: '' }, path: 'eyny', component: _import('account-manage/index') },
+      { meta: { title: '网易账号', icon: '' }, path: 'ntes', component: _import('account-manage/index') },
+      { meta: { title: 'email发件人账号', icon: '' }, path: 'email-collect', component: _import('account-manage/index') },
+      { meta: { title: 'email收件人账号', icon: '' }, path: 'email-send', component: _import('account-manage/index') },
+      { meta: { title: 'imessage收件人账号', icon: '' }, path: 'imessage-collect', component: _import('account-manage/index') }
     ]
   },
 

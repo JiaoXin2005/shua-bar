@@ -1,7 +1,6 @@
 <template>
   <div class="translate">
     <h3>翻译</h3>
-    <i class="iconfont icon-wangyi"></i>
 
     <el-form>
       <el-input type="textarea" placeholder="输入要文字" class="wd-550"

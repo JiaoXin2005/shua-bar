@@ -236,9 +236,24 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/tags',
+    component: Layout,
+    name: 'Tags',
+    hidden: false,
+    meta: {
+      title: '标签管理',
+      icon: 'icon-tags'
+    },
+    children: [
+      { meta: { title: '标签', icon: '' }, path: 'index', component: _import('tags/index') },
+      { hidden: true, path: ':id', component: _import('tags/account') }
+    ]
+  },
+
+  {
     path: '/tool',
     component: Layout,
-    name: 'Toll',
+    name: 'Tool',
     hidden: false,
     meta: {
       title: '工具',

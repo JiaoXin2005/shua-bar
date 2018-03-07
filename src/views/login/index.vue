@@ -4,11 +4,13 @@
       <h3 class="title">系统登录</h3>
 
       <el-form-item prop="username">
-        <el-input name="username" type="text" placeholder="账号" />
+        <el-input name="username" type="text" placeholder="账号" 
+          v-model="username" />
       </el-form-item>
 
       <el-form-item prop="password">
         <el-input  type="password" name="password" placeholder="密码"
+          v-model="password"
           @keyup.enter.native="handleLogin" />
       </el-form-item>
 
@@ -24,9 +26,19 @@ import { setToken } from '@/utils/auth'
 
 export default {
   name: 'login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
     handleLogin () {
-      setToken('xaxaxax')
+      if (this.username.indexOf('admin') > -1) {
+        setToken('admin')
+      } else {
+        setToken('ordinary')
+      }
       this.$router.push('/')
     }
   }

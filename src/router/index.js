@@ -163,25 +163,12 @@ const coreBuinessRouter = [
       { meta: { title: 'iMessage', icon: 'icon-imessage' }, path: 'list', component: _import('core/imessage/list') }
     ]
   }
+
+
 ]
 
-/* constantRouterMap: 总路由表 */
-export const constantRouterMap = [
-  { path: '/404', component: _import('404/index'), hidden: true },
-  { path: '/login', component: _import('login/index'), hidden: true },
-
-  {
-    path: '',
-    component: Layout,
-    redirect: '/dashboard',
-    name: 'Dashboard',
-    hidden: false,
-    children: [{
-      meta: { title: '首页', icon: 'icon-tachometer' },
-      path: 'dashboard',
-      component: _import('dashboard/index')
-    }]
-  },
+// 动态路由
+export const asyncRouterMap =  [
 
   ...coreBuinessRouter,
 
@@ -204,11 +191,12 @@ export const constantRouterMap = [
     hidden: false,
     meta: {
       title: '用户管理',
-      icon: 'icon-building'
+      icon: 'icon-building',
+      role: 'admin'
     },
     children: [
-      { meta: { title: '用户列表', icon: '' }, path: 'index', component: _import('user-manage/index') },
-      { meta: { title: '用户登录历史', icon: '' }, path: 'history', component: _import('user-manage/History') },
+      { meta: { title: '用户列表', icon: '', role: 'admin' }, path: 'index', component: _import('user-manage/index') },
+      { meta: { title: '用户登录历史', icon: '', role: 'admin' }, path: 'history', component: _import('user-manage/History') },
       { hidden: true, path: 'setting', component: _import('user-manage/Setting') }
     ]
   },
@@ -254,7 +242,7 @@ export const constantRouterMap = [
     path: '/tool',
     component: Layout,
     name: 'Tool',
-    hidden: false,
+    hidden: true,
     meta: {
       title: '工具',
       icon: 'icon-wrench'
@@ -266,6 +254,30 @@ export const constantRouterMap = [
   },
 
   { path: '*', redirect: '/404', hidden: true }
+
+]
+
+/* constantRouterMap: 总路由表 */
+export const constantRouterMap = [
+  { path: '/404', component: _import('404/index'), hidden: true },
+  { path: '/login', component: _import('login/index'), hidden: true },
+
+    // 首页面板暂时隐藏
+  {
+    path: '',
+    component: Layout,
+    redirect: '/dashboard',
+    name: 'Dashboard',
+    hidden: true,
+    children: [{
+      meta: { title: '首页', icon: 'icon-tachometer' },
+      path: 'dashboard',
+      component: _import('dashboard/index')
+    }]
+  }
+
+  // ...coreBuinessRouter,
+
 ]
 
 export default new Router({

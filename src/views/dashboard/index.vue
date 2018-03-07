@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <el-row :gutter="20">
+    <!-- 表盘暂时隐藏 -->
+    <!-- <el-row :gutter="20">
       <el-col :xs="24" :sm="24" :lg="12">
         <div class="chart-wrapper">
           <line-chart></line-chart>
@@ -14,7 +15,7 @@
     </el-row>
 
     <h4>监控信息</h4>
-    <monitor-table></monitor-table>
+    <monitor-table></monitor-table> -->
   </div>
 </template>
 
@@ -29,6 +30,16 @@ export default {
     LineChart,
     PieChart,
     MonitorTable
+  },
+  mounted () {    
+
+    // this.$store.dispatch('UserLogin', {
+    //   username: 'admin111',
+    //   passwd: '12345678'
+    // }).then((sa) => {
+    //   console.log(this, sa)
+    // })
+    
   }
 }
 </script>

@@ -1,5 +1,10 @@
-import Axios from 'axios'
+import axios from 'axios'
 import { Message } from 'element-ui'
+
+let Axios = axios.create({
+  // baseURL: 'http://093bf731.ngrok.io/promotion-web'
+  baseURL: '/promotion-web'
+})
 
 Axios.interceptors.request.use(request => {
   return request

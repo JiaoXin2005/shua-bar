@@ -222,12 +222,23 @@ export const asyncRouterMap =  [
     name: 'OrgManage',
     hidden: false,
     meta: {
-      // title: '机构管理',
-      // icon: 'icon-building',
       roles: ['root']
     },
     children: [
       { meta: { title: '机构管理', icon: 'icon-jigou' }, path: 'index', component: _import('org-manage/index') }
+    ]
+  },
+
+  {
+    path: '/proxyIp',
+    component: Layout,
+    name: 'ProxyIp',
+    hidden: false,
+    meta: {
+      roles: ['root']
+    },
+    children: [
+      { meta: { title: '代理节点', icon: 'icon-dailishang' }, path: 'index', component: _import('proxyIp/index') }
     ]
   },
 

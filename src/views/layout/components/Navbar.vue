@@ -51,8 +51,11 @@ export default {
   },
   methods: {
     logout () {
-      removeToken()
-      console.log(this.$router.push('/login'))
+      // removeToken()
+      this.$store.dispatch('LogOut')
+        .then(() => {
+           location.reload()// In order to re-instantiate the vue-router object to avoid bugs
+        })
     },
     toggleSideBar () {
       this.$store.dispatch('toggleSideBar')

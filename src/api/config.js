@@ -13,7 +13,7 @@ Axios.interceptors.request.use(request => {
 Axios.interceptors.response.use(response => {
   if (!response.data.success) {
     Message({
-      message: response.data.errorMsg,
+      message: response.data.errorMessage,
       type: 'error'
     })
     return Promise.reject(response.data)

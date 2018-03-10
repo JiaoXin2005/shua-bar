@@ -32,13 +32,6 @@ export default {
     MonitorTable
   },
   mounted () {    
-
-    // this.$store.dispatch('UserLogin', {
-    //   username: 'admin111',
-    //   passwd: '12345678'
-    // }).then((sa) => {
-    //   console.log(this, sa)
-    // })
     
   }
 }

@@ -26,7 +26,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '百度贴吧',
-      icon: 'icon-baidu'
+      icon: 'icon-baidu',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -43,7 +44,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '伊莉',
-      icon: 'icon-etsy'
+      icon: 'icon-etsy',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
@@ -60,7 +62,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '新浪新闻',
-      icon: 'icon-xinlang'
+      icon: 'icon-xinlang',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -77,7 +80,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '网易',
-      icon: 'icon-wangyi'
+      icon: 'icon-wangyi',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -94,7 +98,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: '微博',
-      icon: 'icon-weibo'
+      icon: 'icon-weibo',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -111,7 +116,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: 'Facebook',
-      icon: 'icon-facebookicon'
+      icon: 'icon-facebookicon',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -128,7 +134,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: 'Twitter',
-      icon: 'icon-twitter'
+      icon: 'icon-twitter',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
@@ -145,7 +152,8 @@ const coreBuinessRouter = [
     hidden: false,
     meta: {
       title: 'Email',
-      icon: 'icon-email'
+      icon: 'icon-email',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '新建任务', icon: '' }, path: 'create', component: _import('core/email/create') },
@@ -159,6 +167,9 @@ const coreBuinessRouter = [
     name: 'iMessage',
     redirect: '/imessage/list',
     hidden: false,
+    meta: {
+      roles: ['normal_admin', 'group_admin']
+    },
     children: [
       { meta: { title: 'iMessage', icon: 'icon-imessage' }, path: 'list', component: _import('core/imessage/list') }
     ]
@@ -177,8 +188,11 @@ export const asyncRouterMap =  [
     component: Layout,
     name: 'RunningTask',
     hidden: false,
+    meta: {
+      roles: ['normal_admin', 'group_admin']
+    },
     children: [{
-      meta: { title: '执行任务页', icon: 'icon-tasks' },
+      meta: { title: '执行任务页', icon: 'icon-tasks'},
       path: 'index',
       component: _import('running-task/index')
     }]
@@ -192,11 +206,11 @@ export const asyncRouterMap =  [
     meta: {
       title: '用户管理',
       icon: 'icon-building',
-      role: 'admin'
+      roles: ['root']
     },
     children: [
-      { meta: { title: '用户列表', icon: '', role: 'admin' }, path: 'index', component: _import('user-manage/index') },
-      { meta: { title: '用户登录历史', icon: '', role: 'admin' }, path: 'history', component: _import('user-manage/History') },
+      { meta: { title: '用户列表', icon: '' }, path: 'index', component: _import('user-manage/index') },
+      { meta: { title: '用户登录历史', icon: '' }, path: 'history', component: _import('user-manage/History') },
       { hidden: true, path: 'setting', component: _import('user-manage/Setting') }
     ]
   },
@@ -208,7 +222,8 @@ export const asyncRouterMap =  [
     hidden: false,
     meta: {
       title: '账号列表',
-      icon: 'icon-thlist'
+      icon: 'icon-thlist',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '百度账号', icon: '' }, path: 'baidu', component: _import('account-manage/index') },
@@ -230,7 +245,8 @@ export const asyncRouterMap =  [
     hidden: false,
     meta: {
       title: '标签管理',
-      icon: 'icon-tags'
+      icon: 'icon-tags',
+      roles: ['normal_admin', 'group_admin']
     },
     children: [
       { meta: { title: '标签', icon: '' }, path: 'index', component: _import('tags/index') },

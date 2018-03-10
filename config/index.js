@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/promotion-web': {
-        target: 'http://093bf731.ngrok.io',
+        target: 'http://fa97cbfa.ngrok.io',
         changeOrigin: true
       }
     },

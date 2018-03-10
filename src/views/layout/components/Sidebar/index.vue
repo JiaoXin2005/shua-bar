@@ -4,7 +4,7 @@
     :collapse="isCollapse" :default-active="$route.path"
     background-color="#454b4e" text-color="#fff" active-text-color="#409eff">
 
-      <sidebar-item :routes="routes"></sidebar-item>
+      <sidebar-item :routes="permissionRouters"></sidebar-item>
     </el-menu>
   </div>
 </template>
@@ -19,13 +19,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'sidebar'
+      'sidebar',
+      'permissionRouters'
     ]),
     isCollapse () {
       return !this.sidebar.opened
-    },
-    routes () {
-      return this.$router.options.routes
     }
   }
 }

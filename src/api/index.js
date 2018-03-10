@@ -1,1 +1,11 @@
-export { default as userApi } from './userApi'
+export { default as userAPI } from './userAPI' // 用户API
+export { default as orgAPI } from './orgAPI' // 机构API
+export { default as workerAPI } from './workerAPI' // 推广节点API
+export { default as proxyIpAPI } from './proxyIpAPI' // 代理API
+export { default as tagAPI } from './tagAPI' // 标签API
+export { default as promotionAPI } from './promotionAPI' // 推广节点API
+export { default as taskAPI } from './taskAPI' // 任务API
+export { default as imessageAPI } from './imessageAPI' // imessageAPI
+export { default as emailAPI } from './emailAPI' // emailAPI
+export { default as commentAPI } from './commentAPI' // 评论API
+export { default as publishAPI } from './publishAPI' // 发布任务API

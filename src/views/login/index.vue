@@ -5,12 +5,12 @@
 
       <el-form-item prop="username">
         <el-input name="username" type="text" placeholder="账号" 
-          v-model="username" />
+          v-model.trim="loginForm.username" />
       </el-form-item>
 
       <el-form-item prop="password">
         <el-input  type="password" name="password" placeholder="密码"
-          v-model="password"
+          v-model.trim="loginForm.passwd"
           @keyup.enter.native="handleLogin" />
       </el-form-item>
 
@@ -28,18 +28,21 @@ export default {
   name: 'login',
   data () {
     return {
-      username: '',
-      password: ''
+      loginForm: {
+        username: '',
+        passwd: ''
+      }
     }
   },
   methods: {
     handleLogin () {
-      if (this.username.indexOf('admin') > -1) {
-        setToken('admin')
-      } else {
-        setToken('ordinary')
+      if(this.loginForm.username && this.loginForm.passwd) {
+        this.$store.dispatch('UserLogin', this.loginForm)
+          .then((res) => {
+            this.$router.push('/')
+          })
+          .catch(err => {})
       }
-      this.$router.push('/')
     }
   }
 }

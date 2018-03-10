@@ -266,6 +266,19 @@ export const asyncRouterMap =  [
   },
 
   {
+    path: '/worker',
+    component: Layout,
+    name: 'Worker',
+    hidden: false,
+    meta: {
+      roles: ['normal_admin', 'group_admin']
+    },
+    children: [
+      { meta: { title: '推广节点', icon: 'icon-1duojiedian' }, path: 'index', component: _import('worker/index') }
+    ]
+  },
+
+  {
     path: '/tags',
     component: Layout,
     name: 'Tags',

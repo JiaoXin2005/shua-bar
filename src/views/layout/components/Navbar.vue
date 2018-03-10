@@ -17,7 +17,7 @@
               首页
             </el-dropdown-item>
           </router-link>
-          <router-link to="/user-manage/setting">
+          <router-link to="/setting">
             <el-dropdown-item>
               修改密码
             </el-dropdown-item>

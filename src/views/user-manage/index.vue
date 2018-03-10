@@ -21,6 +21,9 @@
         prop="username"
         label="用户名"
         width="180">
+        <template slot-scope="scope">
+          <router-link :to="'/user-manage/detail/' + scope.row.id">{{scope.row.username}}</router-link>
+        </template>
       </el-table-column>
       <el-table-column
         prop="role"
@@ -122,11 +125,6 @@ export default {
         username: '',
         role: ''
       },
-      temp: {
-        name: '',
-        role: '',
-        addTime: '2017-1-2'
-      },
       tableData: [],
       listParams: {
         orgId: null,
@@ -225,7 +223,7 @@ export default {
   },
   mounted () {
     this.getOrgList()
-      .then((orgList) => this.listParams.orgId = orgList[1].id) //设置第一个机构id
+      .then((orgList) => this.listParams.orgId = orgList[0].id) //设置第一个机构id
       .then(() => this.getUserList())
   }
 }

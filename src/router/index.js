@@ -210,8 +210,9 @@ export const asyncRouterMap =  [
     },
     children: [
       { meta: { title: '用户列表', icon: '' }, path: 'index', component: _import('user-manage/index') },
-      { meta: { title: '用户登录历史', icon: '' }, path: 'history', component: _import('user-manage/History') },
-      { hidden: true, path: 'setting', component: _import('user-manage/Setting') }
+      { hidden: true, path: 'detail/:uid', component: _import('user-manage/Detail') },
+      // { meta: { title: '用户登录历史', icon: '' }, path: 'history', component: _import('user-manage/History') },
+      // { hidden: true, path: 'setting', component: _import('user-manage/Setting') }
     ]
   },
 
@@ -305,7 +306,18 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: _import('dashboard/index')
     }]
-  }
+  },
+
+  {
+    path: '',
+    component: Layout,
+    name: 'Setting',
+    hidden: true,
+    children: [{
+      path: 'setting',
+      component: _import('user-manage/Setting'),
+    }]
+  },
 
   // ...coreBuinessRouter,
 

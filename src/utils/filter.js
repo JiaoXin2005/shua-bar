@@ -38,7 +38,21 @@ let formatDate = (date, fmt) => {
   return fmt
 }
 
+// 权限转换 ['root', 'group_admin', 'normal_admin']  -》超级管理员、机构管理员、普通管理员
+let parseRole = (role) => {
+  if (!role) {
+    return '权限不存在'
+  }
+  let roleMap = {
+    'root': '超级管理员',
+    'group_admin': '机构管理员',
+    'normal_admin': '普通管理员'
+  }
+  return roleMap[role]
+}
+
 export default {
   thousands,
-  formatDate
+  formatDate,
+  parseRole
 }

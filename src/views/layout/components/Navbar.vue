@@ -5,7 +5,7 @@
     <!-- <breadcrumb class="breadcrumb-container"></breadcrumb> -->
 
     <div class="right-menu">
-
+      <div class="username">{{this.userName || ''}}</div>
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img class="user-avatar" src="~assets/avatar.gif">
@@ -42,7 +42,7 @@ export default {
     Hamburger
   },
   computed: {
-    ...mapGetters(['sidebar'])
+    ...mapGetters(['sidebar', 'userName'])
   },
   data () {
     return {
@@ -105,6 +105,9 @@ export default {
     }
     .theme-switch {
       vertical-align: 15px;
+    }
+    .username {
+      float: left;
     }
     .avatar-container {
       height: 50px;

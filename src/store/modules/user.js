@@ -1,5 +1,5 @@
 import { setToken, removeToken } from '@/utils/auth'
-import { userAPI } from '@/API'
+import { userAPI } from '@/api'
 
 const user = {
   state: {

@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import { userAPI } from '@/api'
+
 export default {
   name: 'UserList',
   data () {
@@ -101,6 +103,12 @@ export default {
       this.tableData.push(this.temp)
       this.dialogFormVisible = false
     }
+  },
+  mounted () {
+    // userAPI.list()
+    //   .then((res) => {
+
+    //   })
   }
 }
 </script>

@@ -216,6 +216,21 @@ export const asyncRouterMap =  [
   },
 
   {
+    path: '/org-manage',
+    component: Layout,
+    name: 'OrgManage',
+    hidden: false,
+    meta: {
+      // title: '机构管理',
+      // icon: 'icon-building',
+      roles: ['root']
+    },
+    children: [
+      { meta: { title: '机构管理', icon: 'icon-jigou' }, path: 'index', component: _import('org-manage/index') }
+    ]
+  },
+
+  {
     path: '/account-manage',
     component: Layout,
     name: 'AccountManage',

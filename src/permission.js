@@ -17,7 +17,6 @@ router.beforeEach((to, from, next) => {
       if (!store.getters.role) { // 判断当前用户是否已拉取完user_info信息
         store.dispatch('GetUserInfo').then(res => {
           const role = res.userModel.role // note: roles must be a array! such as: ['editor','develop']
-          
           store.dispatch('GenerateRoutes', role).then(() => { // 根据roles权限生成可访问的路由表
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
@@ -31,13 +30,12 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
-        if (!store.getters.addRouters.lenght) { // 第一次登陆后产出路由表
+        // 有了userInfo
+        if (!store.getters.addRouters.length) { // 第一次登陆后产出路由表
           store.dispatch('GenerateRoutes', store.getters.role).then(() => { // 根据roles权限生成可访问的路由表
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
           })
-        } else {
-          next()
         }
         next()
       }

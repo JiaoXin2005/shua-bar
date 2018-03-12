@@ -248,7 +248,7 @@ export const asyncRouterMap =  [
     name: 'AccountManage',
     hidden: false,
     meta: {
-      title: '账号列表',
+      title: '推广账号列表',
       icon: 'icon-thlist',
       roles: ['normal_admin', 'group_admin']
     },

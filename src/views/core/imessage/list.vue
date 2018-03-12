@@ -1,7 +1,10 @@
 <template>
   <div class="imessage-list">
+    <h3>imessage账号列表</h3>
 
-    <div class="filer-container">
+    <el-button type="primary" @click="handleCreate">添加</el-button>
+
+    <!-- <div class="filer-container">
       <el-input class="wd-200" placeholder="任务名称" ></el-input>
       <el-select placeholder="状态" v-model="test">
         <el-option label="排队中" value="排队中"></el-option>
@@ -9,9 +12,9 @@
         <el-option label="完成" value="完成"></el-option>
       </el-select>
       <el-button type="success">查询</el-button>
-    </div>
+    </div> -->
 
-    <el-table
+    <!-- <el-table
       :data="tableData"
       style="width: 100%">
       <el-table-column
@@ -37,7 +40,6 @@
             :status="scope.row.status === 100 ? 'success' : ''"></el-progress>
         </template>
       </el-table-column>
-      </el-table-column>
       <el-table-column
         width="180"
         label="操作">
@@ -45,9 +47,65 @@
           <el-button @click="moreDialogVisible = true">更多</el-button>
         </template>
       </el-table-column>
+    </el-table> -->
+    
+      <el-table
+      :data="tableData"
+      style="width: 100%">
+      <el-table-column
+        prop="account"
+        label="imessage账号">
+      </el-table-column>
+
+      <el-table-column
+        prop="tags"
+        label="发件人">
+        <template slot-scope="scope">
+          {{scope.row.tags}}
+        </template>
+      </el-table-column>
+  
+      <!-- <el-table-column
+        width="180"
+        label="操作">
+        <template slot-scope="scope">
+          <el-button @click="moreDialogVisible = true">更多</el-button>
+        </template>
+      </el-table-column> -->
     </el-table>
 
-    <!-- s: 更多弹窗 -->
+    <el-pagination
+      layout="prev, pager, next"
+      :total="total"
+      :current-page="listParams.pageNo"
+      @current-change="handleCurrentChange"
+    ></el-pagination>
+
+    <el-dialog title="添加" :visible.sync="dialogVisible">
+      <el-form  :model="addParams" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
+        <el-form-item label="用户名">
+          <el-input v-model.trim="addParams.imessage"></el-input>
+        </el-form-item>
+
+        <el-form-item label="标签组">
+          <el-select class="filter-item" multiple v-model="addParams.tagIds" placeholder="请选择">
+            <el-option
+              v-for="item in allTags"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button  type="primary" @click="createData">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <!-- s: 更多弹窗  暂时没有用 -->
     <el-dialog title="当前任务内容" :visible.sync="moreDialogVisible">
       <div>新华社拉姆安拉12月22日电（记者杨媛媛赵悦）巴勒斯坦总统阿巴斯22日强调，巴方不接受美国调停和平进程，也不再接受美国提出的任何方案。
 
@@ -65,52 +123,73 @@
 </template>
 
 <script>
+import { imessageAPI, tagAPI } from '@/api'
 
 export default {
   name: 'EmailDetail',
 
   data () {
     return {
-      comment1: '',
+      allTags: [],
       moreDialogVisible: false,
+      dialogVisible: false,
       test: '',
-      links: [{
-        value: ''
-      }],
-      tableData: [
-        {
-          id: '1',
-          name: '任务一号',
-          type: '消息发送',
-          status: 0,
-          type2: '账号类型',
-        },
-        {
-          id: '2',
-          name: '任务二号',
-          type: '消息发送',
-          status: 70,
-          type2: '账号类型',
-        },
-        {
-          id: '3',
-          name: '任务三号',
-          type: '消息评论',
-          status: 100,
-          type2: '账号类型',
-        },
-      ]
+      tableData: [],
+      total: null,
+      listParams: {
+        pageNo: 1,
+        pageSize: 10
+      },
+      addParams: {
+        imessage: '',
+        tagIds: []
+      }
     }
   },
   methods: {
-    addLink () {
-      this.links.push({
-        value: ''
-      })
+    getList() {
+      imessageAPI.listReceiver(this.listParams)
+        .then((res) => {
+          if (res.success) {
+            this.tableData = res.receiverModels
+            this.total = res.totalCount
+          }
+        })
     },
-    deleteLink (index) {
-      this.links.splice(index, 1)
+    getAllTags () {
+      tagAPI.list().then((res) => {this.allTags = res.promotionTagsModelList})
+    },
+    resetAddParams () {
+      this.addParams = {
+        imessage: '',
+        tagIds: []
+      }
+    },
+    handleCurrentChange (val) {
+      this.listParams.pageNo = val
+      this.getList()
+    },
+    handleCreate () {
+      this.resetAddParams()
+      this.dialogVisible = true
+    },
+    createData () {
+      if (!this.addParams.imessage || !this.addParams.tagIds) {
+        this.$message('表单信息填写有误')
+        return
+      }
+      imessageAPI.addReceiver(this.addParams)
+        .then((res) => {
+          if (res.success) {
+            this.getList()
+            this.dialogVisible = false
+          }
+        })
     }
+  },
+  mounted () {
+    this.getAllTags()
+    this.getList()
   }
 }
 </script>

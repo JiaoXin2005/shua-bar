@@ -126,7 +126,7 @@
 import { imessageAPI, tagAPI } from '@/api'
 
 export default {
-  name: 'EmailDetail',
+  name: 'ImessageDetail',
 
   data () {
     return {

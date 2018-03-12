@@ -157,7 +157,8 @@ const coreBuinessRouter = [
     },
     children: [
       { meta: { title: '新建任务', icon: '' }, path: 'create', component: _import('core/email/create') },
-      { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/email/list') }
+      { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/email/list') },
+      { meta: { title: '账号列表', icon: '' }, path: 'account', component: _import('core/email/account') }
     ]
   },
 

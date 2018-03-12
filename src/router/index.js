@@ -253,15 +253,16 @@ export const asyncRouterMap =  [
       roles: ['normal_admin', 'group_admin']
     },
     children: [
-      { meta: { title: '百度账号', icon: '' }, path: 'baidu', component: _import('account-manage/index') },
-      { meta: { title: '新浪账号', icon: '' }, path: 'sina', component: _import('account-manage/index') },
+      { meta: { title: '百度账号', icon: '' }, path: 'tieba', component: _import('account-manage/index') },
+      { meta: { title: '微博账号', icon: '' }, path: 'weibo', component: _import('account-manage/index') },
+      { meta: { title: '伊莉账号', icon: '' }, path: 'yili', component: _import('account-manage/index') },
       { meta: { title: 'facebook账号', icon: '' }, path: 'facebook', component: _import('account-manage/index') },
       { meta: { title: 'twitter账号', icon: '' }, path: 'twitter', component: _import('account-manage/index') },
-      { meta: { title: '伊莉账号', icon: '' }, path: 'eyny', component: _import('account-manage/index') },
-      { meta: { title: '网易账号', icon: '' }, path: 'ntes', component: _import('account-manage/index') },
-      { meta: { title: 'email发件人账号', icon: '' }, path: 'email-collect', component: _import('account-manage/index') },
-      { meta: { title: 'email收件人账号', icon: '' }, path: 'email-send', component: _import('account-manage/index') },
-      { meta: { title: 'imessage收件人账号', icon: '' }, path: 'imessage-collect', component: _import('account-manage/index') }
+      { meta: { title: '新浪账号', icon: '' }, path: 'sina', component: _import('account-manage/index') },      
+      { meta: { title: 'hotmail', icon: '' }, path: 'hotmail', component: _import('account-manage/index') },
+      { meta: { title: 'gmail', icon: '' }, path: 'gmail', component: _import('account-manage/index') },
+      { meta: { title: 'yahoo', icon: '' }, path: 'yahoo', component: _import('account-manage/index') },
+      { meta: { title: '网易账号', icon: '' }, path: 'wangyi', component: _import('account-manage/index') }
     ]
   },
 

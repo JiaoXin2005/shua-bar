@@ -15,8 +15,8 @@ import Axios from './config'
 */
 let promotionAPI = {
   'list': (params) => Axios.get('/promotion/account/list', { params }), // 推广账户列表
-  'add': (params) => Axios.get('/promotion/account/add', { params }), // 添加推广账号
-  'edit': (params) => Axios.get('/promotion/account/edit', { params }) // 编辑推广账号 
+  'add': (params) => Axios.post('/promotion/account/add',  params ), // 添加推广账号
+  'edit': (params) => Axios.post('/promotion/account/edit', params ) // 编辑推广账号 
 }
 
 export default promotionAPI

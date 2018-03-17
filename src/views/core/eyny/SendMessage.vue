@@ -14,52 +14,7 @@
     </div>
     -->
 
-    <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="id"
-        label="任务id">
-      </el-table-column>
-      <el-table-column
-        prop="taskName"
-        label="任务名称">
-      </el-table-column>
-      <el-table-column
-        prop="taskType"
-        label="任务类型">
-      </el-table-column>
-      <el-table-column
-        label="任务状态">
-        <template slot-scope="scope">
-          <el-progress :text-inside="true" :stroke-width="14" 
-            :percentage="scope.row.status == 'new' ? 0 :( scope.row.status == 'under_going' ? 50 : 100)"
-            ></el-progress>
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="operator"
-        label="发布人">
-      </el-table-column>
-      <el-table-column
-        width="180"
-        label="操作">
-        <template slot-scope="scope">
-          <!-- <el-button @click="moreDialogVisible = true">更多</el-button> -->
-          <router-link :to="'publishDetail/' + scope.row.id">
-            <el-button type="primary" >任务详细</el-button>          
-          </router-link> 
-        </template>
-      </el-table-column>
-    </el-table>
-
-    <el-pagination
-      layout="prev, pager, next"
-      :total="total"
-      :current-page="taskListParams.pageNo"
-      @current-change="handleCurrentChange"
-    ></el-pagination>
-
+    <TaskList website='yili'  type='publish' ref="TaskList"/>
 
     <el-dialog title="新建论坛发布任务" :visible.sync="dialogVisible">
       <el-form label-width="80px" class="wd-550">
@@ -92,27 +47,20 @@
 <script>
 import { taskAPI } from '@/api'
 import TranslateBtn from '@/components/TranslateBtn'
+import TaskList from '../Common/TaskList'
+
 
 export default {
   name: 'SendMessage',
   components: {
-    TranslateBtn
+    TranslateBtn,
+    TaskList
   },
   data () {
     return {
-      comment: '',
-      comment1: '',
       dialogVisible: false,
       moreDialogVisible: false,
-      test: '',
-      total: null,      
-      tableData: [],
-      taskListParams: {
-        pageNo: 1,
-        pageSize: 10,
-        website: 'yili',
-        type: 'publish'
-      },
+      test: '', 
       addBBSPublishParams: {
         taskName: '',
         bbsName: 'yili',
@@ -122,15 +70,6 @@ export default {
     }
   },
   methods: {
-    getTaskList() {
-      taskAPI.list(this.taskListParams)
-        .then((res) => {
-          if (res.success) {
-            this.tableData = res.taskModels
-            this.total = res.totalCount
-          }
-        })
-    },
     retsetAddParams () {
       this.addBBSPublishParams = {
         taskName: '',
@@ -143,10 +82,6 @@ export default {
       this.retsetAddParams()
       this.dialogVisible = true
     },
-    handleCurrentChange (val) {
-      this.taskListParams.pageNo = val
-      this.getTaskList()
-    },
     confirm () {
       if (!this.addBBSPublishParams.taskName || !this.addBBSPublishParams.bbsChannel || !this.addBBSPublishParams.publishText) {
         this.$message('参数不全')
@@ -154,13 +89,13 @@ export default {
       }
       taskAPI.addBbsPublish(this.addBBSPublishParams)
         .then((res) => {
-          res.success && this.getTaskList()
+          this.$refs.TaskList.getTaskList()
           this.dialogVisible = false
         })
     },
   },
   mounted () {
-    this.getTaskList()
+
   }
 }
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div class="task-detail">
-    <h1> 没有用的  </h1>
     <h3>评论任务列表详情</h3>
     <el-table label-position="left" label-width="80px" :data="tableData">
       <el-table-column label="工作IP" prop="workerIp"></el-table-column>

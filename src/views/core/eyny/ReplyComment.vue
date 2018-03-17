@@ -1,9 +1,10 @@
 <template>
   <div class="reply-comment">
-    
-    <el-button type="primary" class="mgb-20" @click="dialogVisible = true">新建任务</el-button>
+    <h3>论坛评论任务 </h3>
+    <el-button type="primary" class="mgb-20" @click="handleCreate">新建任务</el-button>
 
-    <div class="filer-container">
+    <!-- 查询按钮 -->
+    <!-- <div class="filer-container">
       <el-input class="wd-200" placeholder="任务名称" ></el-input>
       <el-select placeholder="状态" v-model="test">
         <el-option label="排队中" value="排队中"></el-option>
@@ -11,7 +12,7 @@
         <el-option label="完成" value="完成"></el-option>
       </el-select>
       <el-button type="success">查询</el-button>
-    </div>
+    </div> -->
 
     <el-table
       :data="tableData"
@@ -21,66 +22,89 @@
         label="任务id">
       </el-table-column>
       <el-table-column
-        prop="name"
+        prop="taskName"
         label="任务名称">
       </el-table-column>
       <el-table-column
-        prop="type"
+        prop="taskType"
         label="任务类型">
       </el-table-column>
       <el-table-column
         label="任务状态">
         <template slot-scope="scope">
-          <el-progress :text-inside="true" :stroke-width="14" :percentage="scope.row.status"
-            :status="scope.row.status === 100 ? 'success' : ''"></el-progress>
+          <el-progress :text-inside="true" :stroke-width="14" 
+            :percentage="scope.row.status == 'new' ? 0 :( scope.row.status == 'under_going' ? 50 : 100)"
+            ></el-progress>
         </template>
       </el-table-column>
       <el-table-column
-        prop="type2"
-        label="账号类型">
+        prop="operator"
+        label="发布人">
       </el-table-column>
       <el-table-column
         width="180"
         label="操作">
         <template slot-scope="scope">
-          <el-button @click="moreDialogVisible = true">更多</el-button>
-          <router-link to="detail/1/1">
+          <!-- <el-button @click="moreDialogVisible = true">更多</el-button> -->
+          <router-link :to="'commentDetail/' + scope.row.id">
             <el-button type="primary" >任务详细</el-button>          
           </router-link> 
         </template>
       </el-table-column>
     </el-table>
 
+    <el-pagination
+      layout="prev, pager, next"
+      :total="total"
+      :current-page="taskListParams.pageNo"
+      @current-change="handleCurrentChange"
+    ></el-pagination>
+
     <!-- s: 新建弹窗 -->
     <el-dialog title="新建评论回复任务" :visible.sync="dialogVisible" >
       <el-form  label-width="80px" class="wd-550">
-        <el-form-item label="文章链接">
 
-        <el-form-item v-for="(link, index) in links" :key="index">
-          <el-input type="input" v-model="link.value" class=""></el-input>
-          <el-button type="danger" @click="deleteLink(index)" v-if="links.length !== 1">删除</el-button>
-          <el-button type="primary" @click="addLink()" v-if="index == links.length-1">新增</el-button>
+        <el-form-item label="任务名称">
+          <el-input v-model="addCommentParams.taskName" ></el-input>
         </el-form-item>
+
+        <el-form-item label="文章链接">
+          
+          <el-input type="input" v-model="addCommentParams.articleLink"></el-input>
+
+          <!-- 暂时没有多条连接
+          <el-form-item v-for="(link, index) in links" :key="index">
+            <el-input type="input" v-model="link.value" class=""></el-input>
+            <el-button type="danger" @click="deleteLink(index)" v-if="links.length !== 1">删除</el-button>
+            <el-button type="primary" @click="addLink()" v-if="index == links.length-1">新增</el-button>
+          </el-form-item>
+          -->
 
         </el-form-item>
 
         <el-form-item label="评论内容">
-          <el-input type="textarea" v-model="comment" placeholder="一定要是繁体哦~"></el-input>
+          <el-input type="textarea" v-model="addCommentParams.commentText" 
+            :autosize="{ minRows: 8}"
+            placeholder="一条评论以换行结束，一定要是繁体哦~"></el-input>
 
-          <!-- s: 翻译按钮 -->
-          <translate-btn :inputVal="comment" @click="handleTranslateLang"></translate-btn>
-          <!-- e: 翻译按钮 -->          
+        <!-- s: 翻译按钮 暂时没有 -->
+        <!-- <translate-btn :inputVal="comment" @click="handleTranslateLang"></translate-btn> -->
+        <!-- e: 翻译按钮 -->          
 
         </el-form-item>
 
+
+        <!-- 暂时没有 -->
+        <!-- 
         <el-form-item label="">
           <el-input type="textarea" v-model="comment1"></el-input>
-        </el-form-item>
-
+        </el-form-item> 
+        
         <el-form-item label="评论数量">
           <el-input type="input" class="wd-200"></el-input>
         </el-form-item>
-    
+        -->
+
         <el-form-item>
           <el-button type="danger" @click="dialogVisible = false">取 消</el-button>          
           <el-button type="success" @click="confirm">立即创建</el-button>
@@ -108,6 +132,7 @@
 </template>
 
 <script>
+import { taskAPI } from '@/api'
 import TranslateBtn from '@/components/TranslateBtn'
 
 export default {
@@ -125,46 +150,73 @@ export default {
       links: [{
         value: ''
       }],
-      tableData: [
-        {
-          id: '1',
-          name: '任务一号',
-          type: '消息发送',
-          status: 0,
-          type2: '账号类型',
-        },
-        {
-          id: '2',
-          name: '任务二号',
-          type: '消息发送',
-          status: 70,
-          type2: '账号类型',
-        },
-        {
-          id: '3',
-          name: '任务三号',
-          type: '消息评论',
-          status: 100,
-          type2: '账号类型',
-        },
-      ]
+      total: null,
+      tableData: [],
+      taskListParams: {
+        pageNo: 1,
+        pageSize: 10,
+        website: 'yili',
+        type: 'comment'
+      },
+      addCommentParams: {
+        taskName: '',
+        website: 'yili',
+        articleLink: '',
+        commentText: ''
+      }
     }
   },
   methods: {
-    addLink () {
-      this.links.push({
-        value: ''
-      })
+    // addLink () {
+    //   this.links.push({
+    //     value: ''
+    //   })
+    // },
+    // deleteLink (index) {
+    //   this.links.splice(index, 1)
+    // },
+    // handleTranslateLang (val) {
+    //   this.comment1 = val
+    // },
+    getTaskList() {
+      taskAPI.list(this.taskListParams)
+        .then((res) => {
+          if (res.success) {
+            this.tableData = res.taskModels
+            this.total = res.totalCount
+          }
+        })
     },
-    deleteLink (index) {
-      this.links.splice(index, 1)
-    },
-    confirm () {
+    handleCreate () {
+      this.retsetAddParams()
       this.dialogVisible = true
     },
-    handleTranslateLang (val) {
-      this.comment1 = val
-    }
+    handleCurrentChange (val) {
+      this.taskListParams.pageNo = val
+      this.getTaskList()
+    },
+    retsetAddParams () {
+      this.addCommentParams = {
+        taskName: '',
+        website: 'yili',
+        articleLink: '',
+        commentText: ''
+      }
+    },
+    confirm () {
+      if (!this.addCommentParams.taskName || !this.addCommentParams.articleLink || !this.addCommentParams.commentText) {
+        this.$message('参数不全')
+        return
+      }
+      taskAPI.addComment(this.addCommentParams)
+        .then((res) => {
+          res.success && this.getTaskList()
+          this.dialogVisible = false
+        })
+    },
+  },
+  mounted () {
+    this.getTaskList()
   }
 }
 </script>

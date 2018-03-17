@@ -23,7 +23,7 @@ const coreBuinessRouter = [
     component: Layout,
     name: 'Baidu',
     redirect: '/baidu/reply-comment',
-    hidden: false,
+    hidden: true,
     meta: {
       title: '百度贴吧',
       icon: 'icon-baidu',
@@ -50,7 +50,8 @@ const coreBuinessRouter = [
     children: [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
       { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/eyny/Detail') }
+      { hidden: true, path: 'commentDetail/:taskId', component: _import('core/TaskListDetail/comment') },
+      { hidden: true, path: 'publishDetail/:taskId', component: _import('core/TaskListDetail/publish') }
     ]
   },
 
@@ -59,7 +60,7 @@ const coreBuinessRouter = [
     component: Layout,
     name: 'Sina',
     redirect: '/sina/reply-comment',
-    hidden: false,
+    hidden: true,
     meta: {
       title: '新浪新闻',
       icon: 'icon-xinlang',
@@ -77,7 +78,7 @@ const coreBuinessRouter = [
     component: Layout,
     name: 'Ntes',
     redirect: '/ntes/reply-comment',
-    hidden: false,
+    hidden: true,
     meta: {
       title: '网易',
       icon: 'icon-wangyi',
@@ -95,7 +96,7 @@ const coreBuinessRouter = [
     component: Layout,
     name: 'Weibo',
     redirect: '/weibo/reply-comment',
-    hidden: false,
+    hidden: true,
     meta: {
       title: '微博',
       icon: 'icon-weibo',
@@ -120,9 +121,14 @@ const coreBuinessRouter = [
       roles: ['normal_admin', 'group_admin']
     },
     children: [
-      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/facebook/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/facebook/SocialPublish') },
+      { hidden: true, path: 'commentDetail/:taskId', component: _import('core/TaskListDetail/comment') },
+      { hidden: true, path: 'publishDetail/:taskId', component: _import('core/TaskListDetail/publish') }
+
+      // { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      // { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') }
     ]
   },
 
@@ -138,9 +144,14 @@ const coreBuinessRouter = [
       roles: ['normal_admin', 'group_admin']
     },
     children: [
-      { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
-      { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
-      { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') },
+      { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/twitter/ReplyComment') },
+      { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/twitter/SocialPublish') },
+      { hidden: true, path: 'commentDetail/:taskId', component: _import('core/TaskListDetail/comment') },
+      { hidden: true, path: 'publishDetail/:taskId', component: _import('core/TaskListDetail/publish') }
+
+      // { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
+      // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
+      // { hidden: true, path: 'detail/:type/:taskid', component: _import('core/baidu/Detail') },
     ]
   },
 

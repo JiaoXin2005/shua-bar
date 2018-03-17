@@ -1,7 +1,6 @@
 <template>
   <div class="task-detail">
-    <h1> 没有用的  </h1>
-    <h3>评论任务列表详情</h3>
+    <h3>发布任务列表详情</h3>
     <el-table label-position="left" label-width="80px" :data="tableData">
       <el-table-column label="工作IP" prop="workerIp"></el-table-column>
       <el-table-column label="目标网站" prop="website"></el-table-column>
@@ -33,10 +32,10 @@
 </template>
 
 <script>
-import { commentAPI  } from '@/api'
+import { publishAPI  } from '@/api'
 
 export default {
-  name: 'TaskDetail',
+  name: 'PublishListDetail',
   data () {
     return {
       total: null,
@@ -55,8 +54,8 @@ export default {
     })
   },
   methods: {
-    getCommentDetailList () {
-      commentAPI.list(this.listParams)
+    getPublishDetailList () {
+      publishAPI.list(this.listParams)
         .then((res) => {
           this.tableData = res.commentMissionModels
           this.total = res.totalCount
@@ -64,12 +63,12 @@ export default {
     },
     handleCurrentChange (val) {
       this.taskListParams.pageNo = val
-      this.getCommentDetailList()
+      this.getPublishDetailList()
     }
   },
   mounted() {
     this.listParams.taskId = this.$route.params.taskId
-    this.getCommentDetailList()
+    this.getPublishDetailList()
   }
 }
 </script>

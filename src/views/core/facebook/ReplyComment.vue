@@ -1,18 +1,7 @@
 <template>
-  <div class="send-message">
-    <h3>论坛发布任务 </h3>
+  <div class="reply-comment">
+    <h3>facebook评论任务 </h3>
     <el-button type="primary" class="mgb-20" @click="handleCreate">新建任务</el-button>
-
-    <!--
-    <div class="filer-container">
-      <el-input class="wd-200" placeholder="任务名称" ></el-input>
-      <el-select placeholder="状态" v-model="test">
-        <el-option label="运行中" value="运行中"></el-option>
-        <el-option label="停止" value="停止"></el-option>
-      </el-select>
-      <el-button type="success">查询</el-button>
-    </div>
-    -->
 
     <el-table
       :data="tableData"
@@ -45,8 +34,7 @@
         width="180"
         label="操作">
         <template slot-scope="scope">
-          <!-- <el-button @click="moreDialogVisible = true">更多</el-button> -->
-          <router-link :to="'publishDetail/' + scope.row.id">
+          <router-link :to="'commentDetail/' + scope.row.id">
             <el-button type="primary" >任务详细</el-button>          
           </router-link> 
         </template>
@@ -60,22 +48,26 @@
       @current-change="handleCurrentChange"
     ></el-pagination>
 
+    <!-- s: 新建弹窗 -->
+    <el-dialog title="新建评论回复任务" :visible.sync="dialogVisible" >
+      <el-form  label-width="80px" class="wd-550">
 
-    <el-dialog title="新建论坛发布任务" :visible.sync="dialogVisible">
-      <el-form label-width="80px" class="wd-550">
-
-        <el-form-item label="任务名">
-          <el-input type="input" v-model="addBBSPublishParams.taskName"></el-input>
+        <el-form-item label="任务名称">
+          <el-input v-model="addCommentParams.taskName" ></el-input>
         </el-form-item>
 
-        <el-form-item label="bbs频道">
-          <el-input type="input" v-model="addBBSPublishParams.bbsChannel"></el-input>
+        <el-form-item label="文章链接">
+          
+          <el-input type="input" v-model="addCommentParams.articleLink"></el-input>
+
+
         </el-form-item>
 
-        <el-form-item label="发送内容">
-          <el-input type="textarea" v-model="addBBSPublishParams.publishText"
+        <el-form-item label="评论内容">
+          <el-input type="textarea" v-model="addCommentParams.commentText" 
             :autosize="{ minRows: 8}"
-            placeholder="一条评论以换行结束，一定要是繁体哦~"></el-input>    
+            placeholder="一条评论以换行结束，一定要是繁体哦~"></el-input> 
+
         </el-form-item>
 
 
@@ -83,8 +75,10 @@
           <el-button type="danger" @click="dialogVisible = false">取 消</el-button>          
           <el-button type="success" @click="confirm">立即创建</el-button>
         </el-form-item>
+
       </el-form>
     </el-dialog>
+    <!-- e: 新建弹窗 -->
 
   </div>
 </template>
@@ -94,30 +88,29 @@ import { taskAPI } from '@/api'
 import TranslateBtn from '@/components/TranslateBtn'
 
 export default {
-  name: 'SendMessage',
+  name: 'ReplyComment',
   components: {
     TranslateBtn
   },
   data () {
     return {
-      comment: '',
-      comment1: '',
       dialogVisible: false,
-      moreDialogVisible: false,
-      test: '',
-      total: null,      
+      links: [{
+        value: ''
+      }],
+      total: null,
       tableData: [],
       taskListParams: {
         pageNo: 1,
         pageSize: 10,
-        website: 'yili',
-        type: 'publish'
+        website: 'facebook',
+        type: 'comment'
       },
-      addBBSPublishParams: {
+      addCommentParams: {
         taskName: '',
-        bbsName: 'yili',
-        bbsChannel: '',
-        publishText: ''
+        website: 'facebook',
+        articleLink: '',
+        commentText: ''
       }
     }
   },
@@ -131,14 +124,6 @@ export default {
           }
         })
     },
-    retsetAddParams () {
-      this.addBBSPublishParams = {
-        taskName: '',
-        bbsName: 'yili',
-        bbsChannel: '',
-        publishText: ''
-      }
-    },
     handleCreate () {
       this.retsetAddParams()
       this.dialogVisible = true
@@ -147,12 +132,17 @@ export default {
       this.taskListParams.pageNo = val
       this.getTaskList()
     },
+    retsetAddParams () {
+      this.addCommentParams.taskName = ''
+      this.addCommentParams.articleLink = ''
+      this.addCommentParams.commentText = ''
+    },
     confirm () {
-      if (!this.addBBSPublishParams.taskName || !this.addBBSPublishParams.bbsChannel || !this.addBBSPublishParams.publishText) {
+      if (!this.addCommentParams.taskName || !this.addCommentParams.articleLink || !this.addCommentParams.commentText) {
         this.$message('参数不全')
         return
       }
-      taskAPI.addBbsPublish(this.addBBSPublishParams)
+      taskAPI.addComment(this.addCommentParams)
         .then((res) => {
           res.success && this.getTaskList()
           this.dialogVisible = false

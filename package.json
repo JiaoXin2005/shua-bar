@@ -2,7 +2,7 @@
   "name": "shua-bar",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "jiaoxin",
+  "author": "admin",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

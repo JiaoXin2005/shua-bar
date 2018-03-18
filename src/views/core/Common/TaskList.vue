@@ -31,9 +31,22 @@
         width="180"
         label="操作">
         <template slot-scope="scope">
-          <router-link :to="'commentDetail/' + scope.row.id">
+          <router-link :to="'commentDetail/' + scope.row.id" v-if="type == 'comment' ">
             <el-button type="primary" >任务详细</el-button>          
           </router-link> 
+
+          <router-link :to="'publishSocialDetail/' + scope.row.id" v-if="type == 'publish' && role == 'social'">
+            <el-button type="primary" >任务详细</el-button>          
+          </router-link> 
+
+          <router-link :to="'publishBBSDetail/' + scope.row.id" v-if="type == 'publish' && role == 'bbs'">
+            <el-button type="primary" >任务详细</el-button>          
+          </router-link>
+
+          <router-link :to="'emailDetail/' + scope.row.id" v-if="type == 'publish' && role == 'email'">
+            <el-button type="primary" >任务详细</el-button>          
+          </router-link>
+
         </template>
       </el-table-column>
     </el-table>
@@ -53,7 +66,7 @@ import { taskAPI } from '@/api'
 
 
 export default {
-  props: ['type', 'website'],
+  props: ['type', 'website', 'role'],  //  type - comment | publist  ****  role - bbs | social | email
   data () {
     return {
       total: null,

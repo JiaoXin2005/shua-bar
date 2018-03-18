@@ -14,7 +14,7 @@
       <el-button type="success">查询</el-button>
     </div> -->
 
-    <TaskList website='yili'  type='comment' ref="TaskList"/>
+    <TaskList website='yili'  type='comment' role='bbs' ref="TaskList"/>
 
 
     <!-- s: 新建弹窗 -->

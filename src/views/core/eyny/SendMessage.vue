@@ -14,7 +14,7 @@
     </div>
     -->
 
-    <TaskList website='yili'  type='publish' ref="TaskList"/>
+    <TaskList website='yili'  type='publish'  role='bbs' ref="TaskList"/>
 
     <el-dialog title="新建论坛发布任务" :visible.sync="dialogVisible">
       <el-form label-width="80px" class="wd-550">

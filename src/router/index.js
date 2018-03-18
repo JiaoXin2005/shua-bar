@@ -51,7 +51,7 @@ const coreBuinessRouter = [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/eyny/ReplyComment') },
       { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/eyny/SendMessage') },
       { hidden: true, path: 'commentDetail/:taskId', component: _import('core/TaskListDetail/comment') },
-      { hidden: true, path: 'publishDetail/:taskId', component: _import('core/TaskListDetail/publish') }
+      { hidden: true, path: 'publishBBSDetail/:taskId', component: _import('core/TaskListDetail/bbsList') }
     ]
   },
 
@@ -124,7 +124,7 @@ const coreBuinessRouter = [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/facebook/ReplyComment') },
       { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/facebook/SocialPublish') },
       { hidden: true, path: 'commentDetail/:taskId', component: _import('core/TaskListDetail/comment') },
-      { hidden: true, path: 'publishDetail/:taskId', component: _import('core/TaskListDetail/publish') }
+      { hidden: true, path: 'publishSocialDetail/:taskId', component: _import('core/TaskListDetail/social') }
 
       // { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
       // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
@@ -147,7 +147,7 @@ const coreBuinessRouter = [
       { meta: { title: '评论', icon: '' }, path: 'reply-comment', component: _import('core/twitter/ReplyComment') },
       { meta: { title: '发帖', icon: '' }, path: 'send-message', component: _import('core/twitter/SocialPublish') },
       { hidden: true, path: 'commentDetail/:taskId', component: _import('core/TaskListDetail/comment') },
-      { hidden: true, path: 'publishDetail/:taskId', component: _import('core/TaskListDetail/publish') }
+      { hidden: true, path: 'publishSocialDetail/:taskId', component: _import('core/TaskListDetail/social') }
 
       // { meta: { title: '回复', icon: '' }, path: 'reply-comment', component: _import('core/baidu/ReplyComment') },
       // { meta: { title: '主贴', icon: '' }, path: 'send-message', component: _import('core/baidu/SendMessage') },
@@ -169,7 +169,9 @@ const coreBuinessRouter = [
     children: [
       { meta: { title: '新建任务', icon: '' }, path: 'create', component: _import('core/email/create') },
       { meta: { title: '任务列表', icon: '' }, path: 'list', component: _import('core/email/list') },
-      { meta: { title: '账号列表', icon: '' }, path: 'account', component: _import('core/email/account') }
+      { meta: { title: '账号列表', icon: '' }, path: 'account', component: _import('core/email/account') },
+      { hidden: true, path: 'emailDetail/:taskId', component: _import('core/TaskListDetail/email') }
+      
     ]
   },
 

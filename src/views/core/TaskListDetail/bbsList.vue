@@ -3,7 +3,9 @@
     <h3>发布任务列表详情</h3>
     <el-table label-position="left" label-width="80px" :data="tableData">
       <el-table-column label="工作IP" prop="workerIp"></el-table-column>
-      <el-table-column label="目标网站" prop="website"></el-table-column>
+      <el-table-column label="bbsName" prop="bbsName"></el-table-column>
+      <el-table-column label="bbsChannel" prop="bbsChannel"></el-table-column>
+      <el-table-column label="标题" prop="title"></el-table-column>      
       <el-table-column label="内容" prop="content"></el-table-column>
       <el-table-column label="提交时间" prop="submitTime">
         <template slot-scope="scope">
@@ -15,7 +17,6 @@
           {{scope.row.addTime | formatDate}}
         </template>
       </el-table-column>
-      <el-table-column label="文章链接" prop="articleLink"></el-table-column>
       <el-table-column label="状态" prop="status"></el-table-column>      
       <el-table-column label="完成时间" prop="finishTime"></el-table-column>
     </el-table>
@@ -35,7 +36,7 @@
 import { publishAPI  } from '@/api'
 
 export default {
-  name: 'PublishListDetail',
+  name: 'PublishBBSListDetail',
   data () {
     return {
       total: null,
@@ -55,9 +56,9 @@ export default {
   },
   methods: {
     getPublishDetailList () {
-      publishAPI.list(this.listParams)
+      publishAPI.bbsList(this.listParams)
         .then((res) => {
-          this.tableData = res.commentMissionModels
+          this.tableData = res.bbsPostModels
           this.total = res.totalCount
         })
     },

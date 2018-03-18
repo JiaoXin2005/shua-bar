@@ -3,7 +3,7 @@
     <h3>twitter评论任务 </h3>
     <el-button type="primary" class="mgb-20" @click="handleCreate">新建任务</el-button>
 
-    <TaskList website='twitter'  type='comment' ref="TaskList"/>    
+    <TaskList website='twitter'  type='comment' role='social' ref="TaskList"/>    
 
     <!-- s: 新建弹窗 -->
     <el-dialog title="新建评论回复任务" :visible.sync="dialogVisible" >
